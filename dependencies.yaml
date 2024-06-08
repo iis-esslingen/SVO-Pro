@@ -1,7 +1,7 @@
 repositories:
   catkin_simple:
     type: git
-    url: https://github.com:/atkin/catkin_simple.git
+    url: https://github.com:/catkin/catkin_simple.git
     version: master
   cmake_external_project_catkin:
     type: git
