@@ -1,0 +1,66 @@
+<!-- Launch File for running svo with ceres backend from bag-file -->
+<launch>
+  <arg name="bag_start"   default="0" />              
+  <arg name="duration"    default="10000" />
+  <arg name="bag_rate"    default="1" />
+  <arg name="dataset"     default="stihl" />          
+  <arg name="do_bag"      default="false" />          
+  <arg name="bag"         default="" />
+
+  <!-- saving trajectory path and timing information -->
+  <arg name="do_save_traj"        default="false" />
+  <arg name="do_save_resource"    default="false" />
+  <arg name="traj_file_name"      default="" />
+  <arg name="resource_file_name"  default="resource_usage.csv" />
+
+  <!-- if we should viz -->
+  <arg name="show_rviz"   default="true" />
+
+  <!-- enable loop closure detection and correction -->
+  <arg name="do_lc"               default="false" />
+
+  <arg name="calib_file" default="$(find svo_ros)/param/calib/stihl_stereo-inertial_t265_internal.yaml"/>
+
+  <!-- SVO node -->
+  <node pkg="svo_ros" type="svo_node" name="svo" clear_params="true" output="screen" args="--v=0">
+
+    <!-- Camera topic to subscribe to -->
+    <param name="cam0_topic" value="/t265/image_left" type="str" />
+    <param name="cam1_topic" value="/t265/image_right" type="str" />
+	
+    <!-- Imu topic to subscribe to -->
+    <param name="imu_topic" value="/t265/imu" type="str" />
+
+    <!-- Camera calibration file -->
+    <param name="calib_file" value="$(arg calib_file)" />
+
+    <!--Parameters-->
+    <rosparam file="$(find svo_ros)/param/stihl_stereo-inertial_t265.yaml" />
+    <param name='runlc' value='$(arg do_lc)' />
+
+  </node>
+
+  <!-- play the dataset -->
+  <group if="$(arg do_bag)">
+      <node pkg="rosbag" type="play" name="rosbag" args="-d 1 -r $(arg bag_rate) -s $(arg bag_start) -u $(arg duration) $(arg bag)" required="true"/>
+  </group>
+
+  <!-- OOUTPUT: path viz of loop closure -->
+  <group if="$(arg do_save_traj)">
+      <node name="recorder_estimate3" pkg="ov_loop_fusion" type="save_trajectory_node.py" output="screen" required="true">
+          <param name="file_name"   type="string"   value="$(arg traj_file_name)" />
+      </node>
+  </group>
+
+  <!-- RVIZ -->
+  <group if="$(arg show_rviz)">
+    <node name="vis" pkg="rviz" type="rviz" args=" -d $(find svo_ros)/rviz_config_vio.rviz" />
+  </group>
+
+  <group if="$(arg do_save_resource)">
+    <include file="$(find cpu_monitor)/launch/cpu_monitor.launch">
+      <arg name="csv_file" value="$(arg resource_file_name)"/>
+    </include>
+  </group>
+
+</launch>
