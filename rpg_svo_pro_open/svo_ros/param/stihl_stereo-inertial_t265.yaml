@@ -72,7 +72,7 @@ init_min_disparity: 30
 # Feature Detection
 grid_size: 35 # Larger for larger images, for every cell you have max one feature.
 n_pyr_levels: 5 # Increase for larger images (image align max minus one)
-detector_threshold_primary: 7 # Fast detector threshold
+detector_threshold_primary: 8 # Fast detector threshold
 detector_threshold_secondary: 200 # Edgelet detector threshold
 detector_threshold_shitomasi: 50 # Map Point detector threshold
 

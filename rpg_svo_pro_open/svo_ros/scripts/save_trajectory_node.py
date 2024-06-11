@@ -13,7 +13,7 @@ class SaveTrajectoryNode:
         rospy.on_shutdown(self.shutdown)
 
         # Create a subscriber to the specified topic
-        rospy.Subscriber("/loop_fusion_node/pose_graph_path", Path, self.path_callback)
+        rospy.Subscriber("/svo/pose_cam/0", PoseStamped, self.path_callback)
 
         # Create a file to write the odometry data
         file_name = rospy.get_param("~file_name")
@@ -21,32 +21,28 @@ class SaveTrajectoryNode:
         self.file.write("# timestamp x y z qx qy qz qw\n")
         print("Trajectory saved in: " + os.path.realpath(self.file.name))
 
-    def path_callback(self, msg: Path):
-        self.file.seek(0)
+    def path_callback(self, msg: PoseStamped):
 
-        for pose_stamped in msg.poses:
-            pose_stamped = cast(PoseStamped, pose_stamped)
-
-            self.file.write(
-                str(pose_stamped.header.stamp.secs)
-                + "."
-                + str(pose_stamped.header.stamp.nsecs)
-                + " "
-                + str(pose_stamped.pose.position.x)
-                + " "
-                + str(pose_stamped.pose.position.y)
-                + " "
-                + str(pose_stamped.pose.position.z)
-                + " "
-                + str(pose_stamped.pose.orientation.x)
-                + " "
-                + str(pose_stamped.pose.orientation.y)
-                + " "
-                + str(pose_stamped.pose.orientation.z)
-                + " "
-                + str(pose_stamped.pose.orientation.w)
-                + "\n"
-            )
+        self.file.write(
+            str(msg.header.stamp.secs)
+            + "."
+            + str(msg.header.stamp.nsecs)
+            + " "
+            + str(msg.pose.position.x)
+            + " "
+            + str(msg.pose.position.y)
+            + " "
+            + str(msg.pose.position.z)
+            + " "
+            + str(msg.pose.orientation.x)
+            + " "
+            + str(msg.pose.orientation.y)
+            + " "
+            + str(msg.pose.orientation.z)
+            + " "
+            + str(msg.pose.orientation.w)
+            + "\n"
+        )
 
         self.file.truncate()
 
