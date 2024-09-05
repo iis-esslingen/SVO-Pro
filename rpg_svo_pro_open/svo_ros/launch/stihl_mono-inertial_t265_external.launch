@@ -19,23 +19,22 @@
   <!-- enable loop closure detection and correction -->
   <arg name="do_lc"               default="true" />
 
-  <arg name="calib_file" default="$(find svo_ros)/param/calib/stihl_stereo-inertial_t265_internal.yaml"/>
+  <arg name="calib_file" default="$(find svo_ros)/param/calib/stihl_mono-inertial_t265_external.yaml"/>
 
   <!-- SVO node -->
   <node pkg="svo_ros" type="svo_node" name="svo" clear_params="true" output="screen" args="--v=0">
 
     <!-- Camera topic to subscribe to -->
     <param name="cam0_topic" value="/t265/image_left" type="str" />
-    <param name="cam1_topic" value="/t265/image_right" type="str" />
 	
     <!-- Imu topic to subscribe to -->
-    <param name="imu_topic" value="/t265/imu" type="str" />
+    <param name="imu_topic" value="/vn100/imu" type="str" />
 
     <!-- Camera calibration file -->
     <param name="calib_file" value="$(arg calib_file)" />
 
     <!--Parameters-->
-    <rosparam file="$(find svo_ros)/param/stihl_stereo-inertial.yaml" />
+    <rosparam file="$(find svo_ros)/param/stihl_mono-inertial.yaml" />
     <param name='runlc' value='$(arg do_lc)' />
 
   </node>

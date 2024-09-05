@@ -1,0 +1,49 @@
+label: "Stihl"
+id: 412eab8e4058621f7036b5e765dfe812
+cameras:
+- camera:
+    label: cam0
+    id: 54812562fa109c40fe90b29a59dd7798
+    line-delay-nanoseconds: 0
+    image_height: 480
+    image_width: 640
+    type: pinhole
+    intrinsics:
+      cols: 1
+      rows: 4
+      data: [306.4922725227081, 306.14812355174007, 320.22100395920455, 234.9227867128218]
+    distortion:
+      type: equidistant 
+      parameters:
+        cols: 1
+        rows: 4
+        data: [-0.04083806866524706, 0.010512320631044807, -0.020992672094212645, 0.008848039004781132]
+  T_B_C:
+    cols: 4
+    rows: 4
+    data: [-0.0023248 , -0.03687035,  0.99931735 , 0.39625852,
+           -0.99999419, -0.00240487, -0.0024151  ,-0.0611419 ,
+            0.00249228, -0.99931716, -0.03686454 , 0.00348678,
+            0.,          0.,          0.,          1.        ]
+
+imu_params:
+  delay_imu_cam: 0.001665541586167502
+  max_imu_delta_t: 0.01
+  acc_max: 176.0
+  omega_max: 17
+  sigma_omega_c: 0.0010803000133061877
+  sigma_acc_c: 0.022943696261362133
+  sigma_omega_bias_c: 2.094774838616867e-05
+  sigma_acc_bias_c: 0.003183408958479904
+  sigma_integration: 0.0
+  g: 9.8082
+  imu_rate: 65
+
+imu_initialization:
+  velocity: [0.0, 0, 0.0]
+  omega_bias: [0.0, 0, 0.0]
+  acc_bias: [0.0, 0.0, 0.0]
+  velocity_sigma: 2.0
+  omega_bias_sigma: 0.01
+  acc_bias_sigma: 0.1
+

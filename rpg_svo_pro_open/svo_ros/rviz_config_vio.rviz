@@ -4,6 +4,8 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
+        - //svo/points1
         - //svo/points1/Namespaces1
         - //svo/loop_closures1/Namespaces1
         - /svo_kfs1/Namespaces1
@@ -27,7 +29,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: /svo/image/0
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -54,12 +56,16 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Filter (blacklist): ""
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        cam_pos:
+          Value: true
+        world:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -67,17 +73,21 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        cam_pos:
+          world:
+            {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Class: rviz/Marker
-      Enabled: false
+      Enabled: true
       Marker Topic: /svo/points
       Name: /svo/points
       Namespaces:
-        {}
+        pts: false
+        seeds: false
+        trajectory: true
       Queue Size: 100
-      Value: false
+      Value: true
     - Alpha: 1
       Axes Length: 1
       Axes Radius: 0.10000000149011612
@@ -107,13 +117,13 @@ Visualization Manager:
       Unreliable: false
       Value: true
     - Class: rviz/Marker
-      Enabled: false
+      Enabled: true
       Marker Topic: /svo/loop_closures
       Name: /svo/loop_closures
       Namespaces:
         {}
       Queue Size: 100
-      Value: false
+      Value: true
     - Alpha: 1
       Axes Length: 1
       Axes Radius: 0.10000000149011612
@@ -146,13 +156,15 @@ Visualization Manager:
       Unreliable: false
       Value: false
     - Class: rviz/Marker
-      Enabled: false
+      Enabled: true
       Marker Topic: /svo/keyframes
       Name: svo_kfs
       Namespaces:
-        {}
+        active_kfs: true
+        cams: true
+        kfs: true
       Queue Size: 100
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -165,7 +177,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: Intensity
       Decay Time: 0
-      Enabled: false
+      Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Min Color: 0; 0; 0
@@ -180,7 +192,7 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -267,7 +279,7 @@ Visualization Manager:
       Value: false
   Enabled: true
   Global Options:
-    Background Color: 179; 179; 179
+    Background Color: 0; 0; 0
     Default Light: true
     Fixed Frame: world
     Frame Rate: 30
@@ -293,7 +305,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 26.74183464050293
+      Distance: 41.19450759887695
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -301,17 +313,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 2.6986348628997803
-        Y: -0.19477568566799164
-        Z: -3.2361745834350586
+        X: 1.82374906539917
+        Y: 2.4332003593444824
+        Z: -1.2034687995910645
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.2247958183288574
+      Pitch: 0.9297963380813599
       Target Frame: <Fixed Frame>
-      Yaw: 3.9636194705963135
+      Yaw: 1.7136162519454956
     Saved: ~
 Window Geometry:
   /svo/image/0:
@@ -331,5 +343,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1856
-  X: 64
+  X: 70
   Y: 27

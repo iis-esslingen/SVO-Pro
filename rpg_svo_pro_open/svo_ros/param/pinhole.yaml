@@ -20,7 +20,7 @@ max_n_kfs: 30
 
 # Map scale when initialized (not used for stereo)
 # Increase if the initial scene depth is larger
-map_scale: 1.0
+map_scale: 5.0
 
 # Initial rotation
 T_world_imuinit/qx: 0

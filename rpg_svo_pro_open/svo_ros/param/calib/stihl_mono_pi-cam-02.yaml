@@ -1,0 +1,27 @@
+label: "Stihl"
+id: 412eab8e4058621f7036b5e765dfe812
+cameras:
+- camera:
+    label: cam0
+    id: 54812562fa109c40fe90b29a59dd7798
+    line-delay-nanoseconds: 0
+    image_height: 480
+    image_width: 640
+    type: pinhole
+    intrinsics:
+      cols: 1
+      rows: 4
+      data: [306.4922725227081, 306.14812355174007, 320.22100395920455, 234.9227867128218]
+    distortion:
+      type: equidistant 
+      parameters:
+        cols: 1
+        rows: 4
+        data: [-0.04083806866524706, 0.010512320631044807, -0.020992672094212645, 0.008848039004781132]
+  T_B_C:
+    cols: 4
+    rows: 4
+    data: [1.0, 0.0, 0.0, 0.0,
+           0.0, 1.0, 0.0, 0.0,
+           0.0, 0.0, 1.0, 0.0,
+           0.0, 0.0, 0.0, 1.0]
