@@ -3,7 +3,7 @@
   <arg name="bag_start"   default="0" />              
   <arg name="duration"    default="10000" />
   <arg name="bag_rate"    default="1" />
-  <arg name="dataset"     default="stihl" />          
+  <arg name="dataset"     default="rover" />          
   <arg name="do_bag"      default="false" />          
   <arg name="bag"         default="" />
 

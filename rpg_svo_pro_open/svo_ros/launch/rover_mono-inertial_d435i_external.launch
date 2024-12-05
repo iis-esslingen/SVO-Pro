@@ -3,7 +3,7 @@
   <arg name="bag_start"   default="0" />              
   <arg name="duration"    default="10000" />
   <arg name="bag_rate"    default="1" />
-  <arg name="dataset"     default="stihl" />          
+  <arg name="dataset"     default="rover" />          
   <arg name="do_bag"      default="false" />          
   <arg name="bag"         default="" />
 
@@ -19,7 +19,7 @@
   <!-- enable loop closure detection and correction -->
   <arg name="do_lc"               default="true" />
 
-  <arg name="calib_file" default="$(find svo_ros)/param/calib/stihl_mono-inertial_d435i_external.yaml"/>
+  <arg name="calib_file" default="$(find svo_ros)/param/calib/rover_mono-inertial_d435i_external.yaml"/>
 
   <!-- SVO node -->
   <node pkg="svo_ros" type="svo_node" name="svo" clear_params="true" output="screen" args="--v=0">
@@ -34,7 +34,7 @@
     <param name="calib_file" value="$(arg calib_file)" />
 
     <!--Parameters-->
-    <rosparam file="$(find svo_ros)/param/stihl_mono-inertial.yaml" />
+    <rosparam file="$(find svo_ros)/param/rover_mono-inertial.yaml" />
     <param name='runlc' value='$(arg do_lc)' />
 
   </node>
