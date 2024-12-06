@@ -14,7 +14,7 @@
   <arg name="resource_file_name"  default="resource_usage.csv" />
 
   <!-- if we should viz -->
-  <arg name="show_rviz"   default="false" />
+  <arg name="show_rviz"   default="true" />
 
   <!-- enable loop closure detection and correction -->
   <arg name="do_lc"               default="true" />
