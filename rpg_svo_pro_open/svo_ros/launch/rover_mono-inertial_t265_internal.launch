@@ -9,9 +9,7 @@
 
   <!-- saving trajectory path and timing information -->
   <arg name="do_save_traj"        default="false" />
-  <arg name="do_save_resource"    default="false" />
   <arg name="traj_file_name"      default="" />
-  <arg name="resource_file_name"  default="resource_usage.csv" />
 
   <!-- if we should viz -->
   <arg name="show_rviz"   default="true" />
@@ -54,12 +52,6 @@
   <!-- RVIZ -->
   <group if="$(arg show_rviz)">
     <node name="vis" pkg="rviz" type="rviz" args=" -d $(find svo_ros)/rviz_config_vio.rviz" />
-  </group>
-
-  <group if="$(arg do_save_resource)">
-    <include file="$(find cpu_monitor)/launch/cpu_monitor.launch">
-      <arg name="csv_file" value="$(arg resource_file_name)"/>
-    </include>
   </group>
 
 </launch>
